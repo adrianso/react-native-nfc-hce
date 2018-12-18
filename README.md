@@ -93,8 +93,14 @@ import HCE from "react-native-hce";
 componentDidMount = () => {
   const { support, enabled } = HCE.supportNFC();
 
-  HCE.listenNFCStatus(enabled => {
-    console.log("NFC enabled: ", enabled);
+  HCE.startListenNFCStatus(resp => {
+    console.log("NFC is: ", resp.status);
+  });
+};
+
+componentWillUnmount = () => {
+  HCE.stopListenNFCStatus(resp => {
+    console.log("no longer listening; NFC is ", resp.status);
   });
 };
 
@@ -109,9 +115,13 @@ _onChangeText = text => {
 
 Get NFC supported and enabled
 
-### listenNFCStatus(enabled:boolean)
+### startListenNFCStatus(response:object)
 
-Listen NFC enabled status
+Start Listening NFC enabled status
+
+### stopListenNFCStatus(response:object)
+
+Stops the Listener for NFC, returns response with current NFC status
 
 ### setCardContent(content:string)
 
