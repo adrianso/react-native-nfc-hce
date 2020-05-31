@@ -11,7 +11,7 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion "27.0.2"
 
     defaultConfig {
@@ -27,9 +27,12 @@ android {
 
 repositories {
     mavenCentral()
+    jcenter()
+    google()   
 }
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
+    implementation 'androidx.annotation:annotation:1.1.0' 
 }
   
